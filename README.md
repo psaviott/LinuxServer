@@ -134,10 +134,51 @@ To deploy this application in your own AWS sistem you will need:
   Clone the github application on apache www directory
   ```
     $  sudo git clone https://github.com/psaviott/Linux-Server.git
+    $  sudo chown -R grader:grader Linux-Server/
+  ```
+  Install pip3
+  ```
+    $  sudo apt install python3-pip
+  ```
+  Install project dependencies
+  ```
+    $  pip3 install -r /requirements.txt
+  ```
+  Create a new virtual environment and activate it
+  ```
+    $  virtualenv -p python3 venv3
+    $  venv3/bin/activate
   ```
 
-9.
+9. Create a host on Apache
 
+  Create conf file
+  ```
+    $  sudo vi /etc/apache2/sites-available/Linux-Server.conf
+  ```
+  Enable host
+  ```
+    $  sudo a2ensite catalog
+  ```
+  Reload Apache2
+  ```
+    $  sudo service apache2 reload
+  ```
+
+10. Install and configure PostgreSQL
+
+  Install Python Packages
+  ```
+    $  sudo apt install libpq-dev python-dev
+  ```
+  Install PostgreSQL
+  ```
+    $  sudo apt install postgresql postgresql-contrib
+  ```
+  Inside psql create a new user with CREATEDB
+  ```psql
+    # CREATE USER catalog WITH PASSWORD 'bill2012' CREATEDB;
+  ```
 ## Deployment
 
 * [How to create a Amazon Lightsail Instance](https://www.systemfixes.com/2018/12/31/how-to-create-an-aws-lightsail-linux-instance/ "Article about how to create an instance on Lightsail")
@@ -161,4 +202,4 @@ To deploy this application in your own AWS sistem you will need:
 * [Python3](https://docs.python.org/3.6/index.html "Python3 documentation") documentation
 * [SSH](https://en.wikipedia.org/wiki/Secure_Shell "Article about SSH") Wikipedia
 * [Coordinated Universal Time](https://en.wikipedia.org/wiki/Coordinated_Universal_Time " Article about UTC time") Wikipedia
-* [Python mod wsgi](https://modwsgi.readthedocs.io/en/develop/ "mod wsgi documentation") documentation
+* [Python mod_wsgi](https://modwsgi.readthedocs.io/en/develop/ "mod wsgi documentation") documentation
