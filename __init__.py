@@ -24,7 +24,7 @@ import httplib2
 app = Flask(__name__)
 
 # Connect and create db session
-engine = create_engine('postgresql:///plants.db')
+engine = create_engine('postgresql://catalog:catalog@localhost/Linux-Server')
 Base.metadata.bind = engine
 DBSession = sessionmaker(bind=engine)
 session = DBSession()
