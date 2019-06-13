@@ -4,3 +4,4 @@ itsdangerous==0.24
 SQLAlchemy==1.0.15
 Flask==0.12.1
 google_api_python_client==1.7.9
+virtualenv

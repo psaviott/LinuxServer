@@ -125,9 +125,15 @@ To deploy this application in your own AWS sistem you will need:
     $  sudo service apache2 start
   ```
 
-8. Install Github
+8. Deploy the application
+
+  Install Github
   ```
     $  sudo apt install git
+  ```
+  Clone the github application on apache www directory
+  ```
+    $  sudo git clone https://github.com/psaviott/Linux-Server.git
   ```
 
 9.
