@@ -1,0 +1,166 @@
+a:hover, a:visited, a:link, a:active  {
+    text-decoration: none;
+}
+
+#top-header {
+  height: 7em;
+}
+
+#log-in-out-button {
+  float: right;
+  margin: 5% 2.5% 0 0;
+}
+
+#new-item-button {
+  margin: 2% 3.5% 0 0;
+  text-align: right;
+}
+
+.list-group-item {
+  color: #61210B;
+  border: 0px;
+  font-family: 'Crimson Text', serif;
+  font-size: 135%;
+  text-align: center;
+}
+
+#item-description {
+  margin: 2.5% 0 4% 0;
+}
+
+.margin-top-sections {
+  margin-top: 3.5%;
+}
+
+.appName {
+  font-family: 'Amatic SC', cursive;
+  font-size: 500%;
+  color: #04B404;
+  margin:0 0 0 2.5%;
+}
+
+.main-body {
+  background-color: #04B404;
+}
+
+.main-footer  {
+  height: 3em;
+}
+
+.name-footer {
+    text-align: center;
+    margin: 0.75% 0 0 0;
+}
+
+.cat-list {
+    border: 10px;
+    border-radius: 20em;
+    margin-left: 15%;
+    width: 70%
+}
+
+.cat-all-list {
+  background-color: white;
+  border-radius: 4em;
+}
+
+.cat-title {
+  text-align:center;
+  margin-bottom: 4%;
+  font-family: 'Raleway', sans-serif;
+  font-size: 255%;
+  color: #61210B;
+  font-weight: bold;
+}
+
+.tree-list {
+  margin: 8% 0 0 0;
+  list-style: none;
+  color: #61210B;
+  text-align: center;
+}
+
+.tree-list .fa-pagelines {
+  margin: 40% 0 0 0;
+  font-size: 300%;
+}
+
+.flash {
+  color: red;
+  margin: 2% 0 0 3.5%;
+}
+
+.item-title {
+  text-align: center;
+  margin-bottom: 1.5%;
+  font-family: 'Raleway', sans-serif;
+  font-size: 255%;
+  color: #61210B;
+  font-weight: bold;
+}
+
+.item-desc {
+  color: white;
+  text-align: center;
+  font-family: 'Raleway', sans-serif;
+  color: #61210B;
+}
+
+.item-desg {
+  border-width: medium;
+  border-color: white;
+  border-style: double;
+  border-radius: 25%;
+  margin: 2% 0 5% 10%;
+  width: 80%;
+}
+
+.item-button {
+  text-align: center;
+  margin-top: 3.5%;
+}
+
+.login {
+  margin: 5% 5% 5% 5%;
+  border-width: medium;
+  border-color: white;
+  border-style:solid;
+  margin: 2% 2% 2% 2%;
+  height: 30em;
+}
+
+.title {
+  text-align:center;;
+  font-family: 'Raleway', sans-serif;
+  font-size: 255%;
+  color: #61210B;
+  font-weight: bold;
+  margin: 2% 0 2% 0;
+}
+
+.google-button {
+  margin: 17% 0 0 42.5%;
+}
+
+.admin-attr {
+  text-align: center;
+  margin: 5% 0 5% 0;
+}
+
+.newitem {
+  margin-bottom: 2%;
+}
+
+.login-page {
+  margin-top: 2.5%;
+  text-align: center;
+}
+
+.title2 {
+  text-align:center;;
+  font-family: 'Raleway', sans-serif;
+  font-size: 190%;
+  color: #61210B;
+  font-weight: bold;
+  margin: 2% 0 2% 0;
+}
