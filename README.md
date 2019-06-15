@@ -36,33 +36,27 @@ To deploy this application in your own AWS sistem you will need:
         $ sudo service ssh restart
       ```
 
-3. Configure Lightsail firewall
+3. Configure Lightsail firewall.
 
       Inside the Item-Cataglog-Server instance on Amazon Lightsail go to network. Then add rules for HTTP, TCP and NTP connections.
 
 4. Configure UFW firewall to only allow incoming connections for SSH(2200), HTTP(80) and NTP(123).
 
-      Deny all incoming
+      Deny all incoming:
       ```
         $ sudo ufw default deny incoming
       ```
-      Allow all outgoing
+      Allow all outgoing:
       ```
         $ sudo ufw default allow outgoing
       ```
-      Allow SSH on port 2200
+      Allow SSH(2200), HTTP(80) and NTP(123) ports:
       ```
         $ sudo ufw allow 2200/tcp
-      ```
-      Allow HTTP on port 80
-      ```
         $ sudo ufw allow 80/tcp
-      ```
-      Allow NTP on port 123
-      ```
         $ sudo ufw allow 123/udp
       ```
-      Enable firewall
+      Enable firewall:
       ```
         $ sudo ufw enable
       ```
@@ -75,124 +69,124 @@ To deploy this application in your own AWS sistem you will need:
 
 5. Give grader access.
 
-      Create new user account on server
+      Create new user account on server:
       ```
         $ sudo adduser grader
       ```
-      Give user sudo permission adding grader ALL=(ALL:ALL) ALL to the file
+      Give user sudo permission adding grader ALL=(ALL:ALL) ALL to the file:
       ```
         $ sudo visudo
       ```
-      Create SSH key for user
+      Create SSH key for user:
       ```
         $ ssh-keygen -f ~/.ssh/udacity_key.rsa
       ```
-      Add key for authorized_keys file
+      Add key for authorized_keys file:
       ```
         $ sudo vi /home/grader/.ssh/authorized_keys
       ```
-      Change the owner the permissions and restart the service
+      Change the owner the permissions and restart the service:
       ```
         $ sudo chown -R grader:grader /home/grader/.ssh
         $ sudo chmod 700 /home/grader/.ssh
         $ sudo chmod 644 /home/grader/.ssh/authorized_keys
         $ sudo service ssh restart
       ```
-      Now you can logon system with the new user
+      Now you can logon system with the new user:
       ```
         $ ssh -i ~/.ssh/udacity_key.rsa grader@18.204.17.121 -p 2200
       ```
 
-6. Configure the local timezone to UTC
+6. Configure the local timezone to UTC.
 
       By default Ubuntu systems has the timezone seted to UTC. To confirm you can run the comand:
       ```
         $  sudo dpkg-reconfigure tzdata
       ```
 
-7. Install and configure Apache to serve a Python3
+7. Install and configure Apache to serve a Python3.
 
-      Install Apache2
+      Install Apache2:
       ```
         $  sudo apt install apache2
       ```
-      Install Python 3 mod_wsgi to allow apache2 to serve python3
+      Install Python 3 mod_wsgi to allow apache2 to serve python3:
       ```
         $  sudo apt-get install libapache2-mod-wsgi-py3
       ```
-      Start Apache Server
+      Start Apache Server:
       ```
         $  sudo service apache2 start
       ```
 
-8. Deploy the application
+8. Deploy the application.
 
-      Install Github
+      Install Github:
       ```
         $  sudo apt install git
       ```
-      Create a directory named LinuxSever inside the Apache www path and get into it
+      Create a directory named LinuxSever inside the Apache www path and get into it:
       ```
         $ sudo mkdir LinuxServer
       ```
-      Clone the github application on apache www directory and move the LinuxServer.wsgi file to LinuxServer clone father
+      Clone the github application on apache www directory and move the LinuxServer.wsgi file to LinuxServer clone father:
       ```
         $  sudo git clone https://github.com/psaviott/LinuxServer.git
         $  sudo chown -R grader:grader LinuxServer/
         $  sudo mv LinuxServer.wsgi /var/www/LinuxServer/LinuxServer.wsgi
       ```
-      Install pip3
+      Install pip3:
       ```
         $  sudo apt install python3-pip
       ```
-      Install create and activate a new virtual environment
+      Install create and activate a new virtual environment:
       ```
         $  sudo pip3 install virtualenv
         $  virtualenv -p python3 venv3
         $  sudo chown -R grader:grader LinuxServer/
         $  . venv3/bin/activate
       ```
-      Install project dependencies and deactivate virtual environment
+      Install project dependencies and deactivate virtual environment:
       ```
         $  pip3 install -r /requirements.txt
         $  sudo apt install python3-psycopg2
         $  deactivate
       ```
 
-9. Create a host on Apache
+9. Create a host on Apache.
 
-      Create conf file
+      Create conf file:
       ```
         $  sudo vi /etc/apache2/sites-available/LinuxServer.conf
       ```
-      Enable host
+      Enable host:
       ```
         $  sudo a2ensite catalog
       ```
-      Reload Apache2
+      Reload Apache2:
       ```
         $  sudo service apache2 reload
       ```
 
-10. Install and configure PostgreSQL
+10. Install and configure PostgreSQL.
 
-      Install Python Packages
+      Install Python Packages:
       ```
         $  sudo apt install libpq-dev python-dev
       ```
-      Install PostgreSQL
+      Install PostgreSQL:
       ```
         $  sudo apt install postgresql postgresql-contrib
       ```
-      Inside psql create a new user with CREATEDB
+      Inside psql create a new user with CREATEDB:
       ```psql
         # CREATE USER catalog WITH PASSWORD 'bill2012' CREATEDB;
       ```
-      Create database
+      Create database:
       ```
         # CREATE DATABASE catalog WITH OWNER catalog
       ```
-      Setup the database with
+      Setup the database with:
       ```
         $ python /var/www/LinuxServer/LinuxServer/models.py
       ```
