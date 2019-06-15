@@ -13,7 +13,7 @@ This project use a Amazon Lightsail Ubuntu Server to host an application.
 Here some information to access the host.
 * IP Address: **18.204.17.121**
 * SSH port: **2200**
-* URL: http://ec2-18-204-17-121.compute-1.amazonaws.com
+* URL: http://18.204.17.121.xip.io/category
 
 ### Prerequisites
 

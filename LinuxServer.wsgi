@@ -6,7 +6,7 @@ import sys
 import logging
 logging.basicConfig(stream=sys.stderr)
 sys.path.insert(0, "/var/www/LinuxServer/LinuxServer")
-sys.path.insert(1, "/var/www/Linux-Server")
+sys.path.insert(1, "/var/www/LinuxServer")
 
 from __init__ import app as application
 application.secret_key = 'super_secret_key'
