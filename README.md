@@ -140,14 +140,16 @@ To deploy this application in your own AWS sistem you will need:
   ```
     $  sudo apt install python3-pip
   ```
-  Install project dependencies
+  Install create and activate a new virtual environment
+  ```
+    $  sudo pip3 install virtualenv
+    $  virtualenv -p python3 venv3
+    $  . venv3/bin/activate
+  ```
+  Install project dependencies and deactivate virtual environment
   ```
     $  pip3 install -r /requirements.txt
-  ```
-  Create a new virtual environment and activate it
-  ```
-    $  virtualenv -p python3 venv3
-    $  venv3/bin/activate
+    $  deactivate
   ```
 
 9. Create a host on Apache
@@ -179,6 +181,11 @@ To deploy this application in your own AWS sistem you will need:
   ```psql
     # CREATE USER catalog WITH PASSWORD 'bill2012' CREATEDB;
   ```
+  Setup the database with
+  ```
+    $ python /var/www/LinuxServer/LinuxServer/models.py
+  ```
+
 ## Deployment
 
 * [How to create a Amazon Lightsail Instance](https://www.systemfixes.com/2018/12/31/how-to-create-an-aws-lightsail-linux-instance/ "Article about how to create an instance on Lightsail")

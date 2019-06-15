@@ -30,7 +30,7 @@ DBSession = sessionmaker(bind=engine)
 session = DBSession()
 
 CLIENT_ID = json.loads(
-    open('client_secrets.json', 'r').read())['web']['client_id']
+    open('/var/www/LinuxServer/LinuxServer/client_secrets.json', 'r').read())['web']['client_id']
 APPLICATION_NAME = "Item-Catalog"
 
 
