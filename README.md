@@ -13,7 +13,7 @@ This project use a Amazon Lightsail Ubuntu Server to host an application.
 Here some information to access the host.
 * IP Address: **18.204.17.121**
 * SSH port: **2200**
-* URL:
+* URL: http://ec2-18-204-17-121.compute-1.amazonaws.com
 
 ### Prerequisites
 
@@ -131,10 +131,15 @@ To deploy this application in your own AWS sistem you will need:
       ```
         $  sudo apt install git
       ```
-      Clone the github application on apache www directory
+      Create a directory named LinuxSever inside the Apache www path and get into it
       ```
-        $  sudo git clone https://github.com/psaviott/Linux-Server.git
-        $  sudo chown -R grader:grader Linux-Server/
+        $ sudo mkdir LinuxServer
+      ```
+      Clone the github application on apache www directory and move the LinuxServer.wsgi file to LinuxServer clone father
+      ```
+        $  sudo git clone https://github.com/psaviott/LinuxServer.git
+        $  sudo chown -R grader:grader LinuxServer/
+        $  sudo mv LinuxServer.wsgi /var/www/LinuxServer/LinuxServer.wsgi
       ```
       Install pip3
       ```
@@ -144,11 +149,13 @@ To deploy this application in your own AWS sistem you will need:
       ```
         $  sudo pip3 install virtualenv
         $  virtualenv -p python3 venv3
+        $  sudo chown -R grader:grader LinuxServer/
         $  . venv3/bin/activate
       ```
       Install project dependencies and deactivate virtual environment
       ```
         $  pip3 install -r /requirements.txt
+        $  sudo apt install python3-psycopg2
         $  deactivate
       ```
 
@@ -156,7 +163,7 @@ To deploy this application in your own AWS sistem you will need:
 
       Create conf file
       ```
-        $  sudo vi /etc/apache2/sites-available/Linux-Server.conf
+        $  sudo vi /etc/apache2/sites-available/LinuxServer.conf
       ```
       Enable host
       ```
@@ -181,6 +188,10 @@ To deploy this application in your own AWS sistem you will need:
       ```psql
         # CREATE USER catalog WITH PASSWORD 'bill2012' CREATEDB;
       ```
+      Create database
+      ```
+        # CREATE DATABASE catalog WITH OWNER catalog
+      ```
       Setup the database with
       ```
         $ python /var/www/LinuxServer/LinuxServer/models.py
@@ -191,7 +202,8 @@ To deploy this application in your own AWS sistem you will need:
 * [How to create a Amazon Lightsail Instance](https://www.systemfixes.com/2018/12/31/how-to-create-an-aws-lightsail-linux-instance/ "Article about how to create an instance on Lightsail")
 * [Connect to your instance with SHH private key](https://support.plesk.com/hc/en-us/articles/360000471513-How-to-connect-to-Amazon-Lightsail-server-via-SSH-with-a-private-key "How to connect to Amazon Lightsail server via SSH with a private key ")
 * [How to configure UFW Firewall](https://www.digitalocean.com/community/tutorials/how-to-setup-a-firewall-with-ufw-on-an-ubuntu-and-debian-cloud-server "How To Setup a Firewall with UFW")
-
+* [Flask Application with mod-wsgi](https://blog.ekbana.com/deploying-flask-application-using-mod-wsgi-bdf59174a389 "Deploying Flask Application Using mod_wsgi")
+* [Setup Apache2](https://www.digitalocean.com/community/tutorials/how-to-configure-the-apache-web-server-on-an-ubuntu-or-debian-vps "How To Configure the Apache Web Server on an Ubuntu or Debian VPS ")
 ## Built With
 
 * [Amazon Lightsail](https://aws.amazon.com/pt/lightsail/ "Amazon Lightsail homepage")

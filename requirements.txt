@@ -2,6 +2,5 @@ requests==2.12.4
 httplib2==0.12.3
 itsdangerous==0.24
 SQLAlchemy==1.0.15
-Flask==0.12.1
+Flask
 google_api_python_client==1.7.9
-python-psycopg2
