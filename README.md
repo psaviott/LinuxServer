@@ -62,12 +62,14 @@ To deploy this application in your own AWS sistem you will need:
       ```
       >Warning: When changing the SSH port, make sure that the firewall is open for port 2200 first, so that you don't lock yourself out of the server.
 
+5. Go to the AWS Lightsail instance and match the UFW configuration with the firewall instance.
+
       After that you can logon server with:
       ```
         $ ssh -i ~/.ssh/LightsailDefaultKey.rsa ubuntu@18.204.17.121 -p 2200
       ```
 
-5. Give grader access.
+6. Give grader access.
 
       Create new user account on server:
       ```
@@ -97,14 +99,14 @@ To deploy this application in your own AWS sistem you will need:
         $ ssh -i ~/.ssh/udacity_key.rsa grader@18.204.17.121 -p 2200
       ```
 
-6. Configure the local timezone to UTC.
+7. Configure the local timezone to UTC.
 
       By default Ubuntu systems has the timezone seted to UTC. To confirm you can run the comand:
       ```
         $  sudo dpkg-reconfigure tzdata
       ```
 
-7. Install and configure Apache to serve a Python3.
+8. Install and configure Apache to serve a Python3.
 
       Install Apache2:
       ```
@@ -119,7 +121,7 @@ To deploy this application in your own AWS sistem you will need:
         $  sudo service apache2 start
       ```
 
-8. Deploy the application.
+9. Deploy the application.
 
       Install Github:
       ```
@@ -153,7 +155,7 @@ To deploy this application in your own AWS sistem you will need:
         $  deactivate
       ```
 
-9. Create a host on Apache.
+10. Create a host on Apache.
 
       Create conf file:
       ```
@@ -168,7 +170,7 @@ To deploy this application in your own AWS sistem you will need:
         $  sudo service apache2 reload
       ```
 
-10. Install and configure PostgreSQL.
+11. Install and configure PostgreSQL.
 
       Install Python Packages:
       ```
