@@ -1,5 +1,5 @@
 requests==2.12.4
-httplib2==0.12.3
+httplib2==0.18.0
 itsdangerous==0.24
 SQLAlchemy==1.0.15
 Flask
